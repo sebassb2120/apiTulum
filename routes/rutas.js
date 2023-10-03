@@ -10,13 +10,13 @@ export let rutas = express.Router();
 
 rutas.post("/api/habitaciones", controladorHabitacion.registrarHabitacion);
 
-rutas.get("/api/habitacion", controladorHabitacion.buscarHabitacionporId);
+rutas.get("/api/habitacion/:id", controladorHabitacion.buscarHabitacionporId);
 
 rutas.get("/api/habitaciones/estrato",controladorHabitacion.buscarHabitaciones);
 
-rutas.put("/api/habitaciones",controladorHabitacion.modificarHabitacion);
+rutas.put("/api/habitaciones/:id",controladorHabitacion.modificarHabitacion);
 
-rutas.delete("/api/habitaciones",controladorHabitacion.borrarHabitacion );
+rutas.delete("/api/habitaciones/:id",controladorHabitacion.borrarHabitacion );
 
 
 
@@ -25,10 +25,11 @@ rutas.delete("/api/habitaciones",controladorHabitacion.borrarHabitacion );
 //atendiendo una peticion y respondiendo
 rutas.post("/api/reservas",controladorReserva.registrarReserva );
 
-rutas.get("/api/reserva",controladorReserva.buscarReservaporId );
+rutas.get("/api/reserva/:id",controladorReserva.buscarReservaporId );
 
 rutas.get("/api/reservas/estrato",controladorReserva.buscarReservas );
 
-rutas.put("/api/reservas",controladorReserva.modificarReserva );
+rutas.put("/api/reservas/:id",controladorReserva.modificarReserva );
 
-rutas.delete("/api/reservas",controladorReserva.borrarReserva );
+rutas.delete("/api/reservas/:id",controladorReserva.borrarReserva );
+

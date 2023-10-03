@@ -15,7 +15,9 @@ export class Api {
 
   procesarPeticiones() {
       this.app.use('/', rutas)
+      this.app.use(express.json())
    }
 
   conectarBD(){}
 }
+
