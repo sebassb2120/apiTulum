@@ -1,32 +1,10 @@
-//Importando el paquete
-const express = require('express')
-const app = express()
+import { Api } from "./api.js";
 
-//atendiendo una peticion y respondiendo
-app.get('/api/habitaciones', function (req, res) {
-  res.send('Hello World')
-})
+//Para usar una clase debo crear un objeto
+// para usar una clase se debe crear una instancia
+// todo objeto es una variable
 
-app.get('/api/habitaciones', function (req, res) {
-    res.send('Hello World')
-})
+let servidor  = new Api()
 
-app.get('/api/habitaciones', function (req, res) {
-    res.send('Hello World')
-})
-
-app.get('/api/habitaciones', function (req, res) {
-    res.send('Hello World')
-})
-
-app.get('/api/habitaciones', function (req, res) {
-    res.send('Hello World')
-})
-
-app.get('/api/habitaciones', function (req, res) {
-    res.send('Hello World')
-})
-//levantando el servidor
-app.listen(3000, function(){
-    console.log("servidor operando")
-})
+//levantar o despertar el servidor
+servidor.levantarServidor()
