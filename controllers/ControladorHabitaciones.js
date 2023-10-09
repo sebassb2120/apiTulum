@@ -90,6 +90,8 @@ export class ControladorHabitaciones{
     }
 }
 
+// RESERVAS.
+
 export class ControladorReserva{
     constructor(){}
     registrarReserva(peticion,respuesta){
