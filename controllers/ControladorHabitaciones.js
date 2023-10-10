@@ -1,3 +1,8 @@
+// error 200 = todo sale bien 
+// error 300 = error en la red
+// error 400 = error en la red
+// error 500 = error en el servidor
+
 export class ControladorHabitaciones{
 
     constructor(){}
