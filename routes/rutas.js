@@ -1,5 +1,6 @@
 import express from "express";
-import {ControladorHabitaciones, ControladorReserva} from '../controllers/ControladorHabitaciones.js'
+import {ControladorHabitaciones} from '../controllers/ControladorHabitaciones.js'
+import {ControladorReserva} from '../controllers/ControladorReserva.js'
 
 // para poder llamar al controlador debo crear un objeto de la clase controladorhabitacion
 let controladorHabitacion = new ControladorHabitaciones();

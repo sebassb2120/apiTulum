@@ -23,4 +23,4 @@ const Reservas = new Schema({
     
 })
 
-export const modeloHabitacion = mongoose.model('reservas', Reservas)
+export const modeloReserva = mongoose.model('reservas', Reservas)

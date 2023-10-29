@@ -3,20 +3,24 @@
 // error 400 = error en la red
 // error 500 = error en el servidor
 
+import {ServicioHabitacion} from '../Service/ServicioHabitacion.js'
+
 export class ControladorHabitaciones{
 
     constructor(){}
-    registrarHabitacion(peticion,respuesta){
+    async registrarHabitacion(peticion,respuesta){
         try{
+
+            let servicioHabitacion = new ServicioHabitacion()
             // esculcar los datos que quieren usar para el registro.
             let datosHabitacionAregistrar=peticion.body
-
             // validar datos 
             // intentar guardar los datos
+            await servicioHabitacion.registrarHabitacion(datosHabitacionAregistrar)
             // responder 
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de guardado",
-                "datos": "aca van los datos guardados"
+                "datos": datosHabitacionAregistrar
             })
         }catch(error){
             respuesta.status(400).json({
@@ -25,13 +29,17 @@ export class ControladorHabitaciones{
             })
         }
     }
-    buscarHabitaciones(peticion,respuesta){
+
+    async buscarHabitaciones(peticion,respuesta){
         try{
+
+            let servicioHabitacion = new ServicioHabitacion()
+            let datosHabitacionBuscar=peticion.body
             // intengtar buscar los datos en BD
             // responder
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de busqueda",
-                "datos": "aca van los datos buscados"
+                "datos": await servicioHabitacion.buscarHabitaciones(datosHabitacionBuscar)
             })
             
         }catch(error){
@@ -41,15 +49,18 @@ export class ControladorHabitaciones{
             })
         }
     }
-    buscarHabitacionporId(peticion,respuesta){
+
+    async buscarHabitacionporId(peticion,respuesta){
         try{
+
+            let servicioHabitacion = new ServicioHabitacion()
             // esculcar los parametros de la peticion
             let idHabitacionBuscar=peticion.params.id
             //validar el dato que llegoo
             // intento buscar el dato en bd
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de buscado",
-                "datos": "aca van el dato buscado"
+                "datos": await servicioHabitacion.buscarHabitacionporId(idHabitacionBuscar)
             })
 
  
@@ -60,19 +71,23 @@ export class ControladorHabitaciones{
                 
             })
         }
-    }      
-    modificarHabitacion(peticion,respuesta){
+    }
+
+    async modificarHabitacion(peticion,respuesta){
         try{ 
+
+            let servicioHabitacion = new ServicioHabitacion()
             // traigo el id ha editar de la peticio
             let idHabitacionModificar = peticion.params.id
             let datosHabitacionModificar = peticion.body
 
             // validar los datatos
             // intentar uscar y modificar en bd
+            await servicioHabitacion.modificarHabitacion(idHabitacionModificar, datosHabitacionModificar)
             //respuesta
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de edicion",
-                "datos": "aca van los datos editados"
+                "datos": datosHabitacionModificar
             })
 
         }catch(error){
@@ -82,9 +97,16 @@ export class ControladorHabitaciones{
             })
         }
     }
-    borrarHabitacion(peticion,respuesta){
+
+    async borrarHabitacion(peticion,respuesta){
         try{
-            let idHabiacionBorrar = peticion.params.id 
+            let servicioHabitacion = new ServicioHabitacion();
+            let idHabitacionBorrar = peticion.params.id 
+            await servicioHabitacion.borrarHabitacion(idHabitacionBorrar);
+
+            respuesta.status(200).json({
+                "mensaje": "Habitación eliminada con éxito",
+            });
 
         }catch(error){
             respuesta.status(400).json({
@@ -94,59 +116,9 @@ export class ControladorHabitaciones{
         }
     }
 }
+    
 
-// RESERVAS.
 
-export class ControladorReserva{
-    constructor(){}
-    registrarReserva(peticion,respuesta){
-        try{
 
-        }catch(error){
-            respuesta.status(400).json({
-                "mensaje":"fallamos en la operacion de datos" + error
-                
-            })
-        }
-    }
-    buscarReservas(peticion,respuesta){
-        try{
 
-        }catch(error){
-            respuesta.status(400).json({
-                "mensaje":"fallamos en la operacion de datos" + error
-                
-            })
-        }
-    }
-    buscarReservaporId(peticion,respuesta){
-        try{
 
-        }catch(error){
-            respuesta.status(400).json({
-                "mensaje":"fallamos en la operacion de datos" + error
-                
-            })
-        }
-    }      
-    modificarReserva(peticion,respuesta){
-        try{
-
-        }catch(error){
-            respuesta.status(400).json({
-                "mensaje":"fallamos en la operacion de datos" + error
-                
-            })
-        }
-    }
-    borrarReserva(peticion,respuesta){
-        try{
-
-        }catch(error){
-             respuesta.status(400).json({
-                "mensaje":"fallamos en la operacion de datos" + error
-                
-            })
-        }
-    }
-}
