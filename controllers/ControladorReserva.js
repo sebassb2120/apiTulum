@@ -7,9 +7,9 @@ export class ControladorReserva{
     constructor(){}
     async registrarReserva(peticion,respuesta){
         try{
-            let serviReserva = new ServicioReserva()
+            let servicioReserva = new ServicioReserva()
             let datosReservaModificar = peticion.body
-            await serviReserva.registrarReserva(datosReservaModificar)
+            await servicioReserva.registrarReserva(datosReservaModificar)
 
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de guardado",
@@ -27,11 +27,11 @@ export class ControladorReserva{
     async buscarReservas(peticion,respuesta){
         try{
 
-            let serviReserva = new ServicioReserva()
+            let servicioReserva = new ServicioReserva()
             let datosReservaABuscar=peticion.body
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de busqueda",
-                "datos": await serviReserva.buscarReserva(datosReservaABuscar)
+                "datos": await servicioReserva.buscarReservas(datosReservaABuscar)
             })
 
         }catch(error){
@@ -45,11 +45,12 @@ export class ControladorReserva{
     async buscarReservaporId(peticion,respuesta){
         try{
 
-            let serviReserva = new ServicioReserva()
+            let servicioReserva = new ServicioReserva()
             let idReservaBuscar=peticion.params.id
+            console.log(idReservaBuscar)
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de buscado",
-                "datos": await serviReserva.buscarReservaporId(idReservaBuscar)
+                "datos": await servicioReserva.buscarReservaporId(idReservaBuscar)
             })
 
         }catch(error){
@@ -63,10 +64,10 @@ export class ControladorReserva{
     async modificarReserva(peticion,respuesta){
         try{
 
-            let serviReserva = new ServicioReserva()
+            let servicioReserva = new ServicioReserva()
             let idReservaModificar = peticion.params.id
             let datosReservaModificar = peticion.body
-            await serviReserva.modificarReserva(idReservaModificar, datosReservaModificar)
+            await servicioReserva.modificarReserva(idReservaModificar, datosReservaModificar)
 
             respuesta.status(200).json({
                 "mensaje":"exito en la operacion de edicion",
@@ -84,9 +85,9 @@ export class ControladorReserva{
     async borrarReserva(peticion,respuesta){
         try{
 
-            let serviReserva = new ServicioReserva()
+            let servicioReserva = new ServicioReserva()
             let idServicioBorrar = peticion.params.id 
-            await serviReserva.borrarHabitacion(idServicioBorrar);
+            await servicioReserva.borrarReserva(idServicioBorrar);
 
             respuesta.status(200).json({
                 "mensaje": "Reserva eliminada con éxito",

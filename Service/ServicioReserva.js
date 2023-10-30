@@ -12,7 +12,7 @@ export class ServicioReserva{
         return reservas
     }
     async buscarReservaporId(id){
-        let reserva = await modeloReserva.find(id)
+        let reserva = await modeloReserva.findById(id)
         return reserva
     }
     async modificarReserva(id,datos){
@@ -20,7 +20,7 @@ export class ServicioReserva{
 
     }
     async borrarReserva(id){
-        return await modeloReserva.findByIdAndUpdatei(id)
+        return await modeloReserva.findByIdAndDelete(id)
     }
 }
 
